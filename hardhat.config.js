@@ -7,7 +7,7 @@ module.exports = {
     thunder: {
       url: "https://rpc.testnet.5ire.network", // RPC endpoint for 5ire
       chainId: 997, // Chain ID for 5ire Testnet
-      accounts: [process.env.PRIVATE_KEY] // Replace with your private key
+      accounts: [process.env.PRIVATE_KEY] // Replace with your private key or create .env file and put there your private key for security
     },
   },
   etherscan: {
