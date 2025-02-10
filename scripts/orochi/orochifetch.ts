@@ -1,20 +1,49 @@
-const hre = require("hardhat");
+import { ethers } from "hardhat";
+import * as dotenv from "dotenv";
+import hre from "hardhat";
 
-async function main() {
-    const [deployer] = await hre.ethers.getSigners();
-    console.log("Deploying contract with account:", deployer.address);
+dotenv.config();
 
-    const orocleAddress = "0x3E36123bAE1d9EB392C32849324D093a45CEDd7F"; // 5ireChain Testnet Oracle address
-    const Fetch5IREUSDT = await hre.ethers.getContractFactory("Fetch5IREUSDT");
-    const fetch5IREUSDT = await Fetch5IREUSDT.deploy(orocleAddress);
+const CONTRACT_ADDRESS = "0xF2F4C646571c0DbF5D388E9FD5b15d02A5381af5"; // Replace with the actual deployed contract address
+const PRIVATE_KEY = process.env.PRIVATE_KEY as string; // 
 
-    await fetch5IREUSDT.waitForDeployment(); 
+async function fetch5IREUSDTPrice() {
+    if (!CONTRACT_ADDRESS || !PRIVATE_KEY) {
+        console.error("❌ Missing CONTRACT_ADDRESS or PRIVATE_KEY. Please check your .env file.");
+        return;
+    }
 
-    console.log("✅ Contract deployed at:", fetch5IREUSDT.target);
+    try {
+        // ✅ Get provider from Hardhat config
+        const provider = new ethers.JsonRpcProvider(hre.network.config.url);
+
+        // ✅ Connect wallet with provider
+        const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+
+        // ✅ Define contract ABI for `FiveIREUSDTConverter`
+        const contractABI = [
+            "function usdtOver5IRE() public view returns (uint256)"
+        ];
+
+        // ✅ Create contract instance
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, wallet);
+
+        console.log("📡 Fetching 5IRE/USDT price from contract...");
+
+        // ✅ Fetch price
+        const price = await contract.usdtOver5IRE();
+
+        if (!price || price.toString() === "0") {
+            console.warn("⚠️ Warning: Retrieved price is 0. Ensure the Oracle has valid data.");
+        }
+
+        console.log(`💰 5IRE/USDT Price: ${ethers.formatUnits(price, 18)} USDT`);
+    } catch (error: any) {
+        console.error("❌ Error fetching price:", error.reason || error.message || error);
+    }
 }
 
-main().catch((error) => {
-    console.error(error);
-    process.exit(1);
-});
+// Execute function
+fetch5IREUSDTPrice().catch(console.error);
+
 
