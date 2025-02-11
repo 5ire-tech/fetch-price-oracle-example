@@ -5,7 +5,7 @@ pragma solidity ^0.8.22;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@orochi-network/contracts/IOrocleAggregatorV2.sol";
 
-contract Fetch5IREUSDT is Ownable {
+contract Fetch5IRE is Ownable {
     IOrocleAggregatorV2 private orocle;
 
     event SetOrocle(address indexed oldOrocle, address indexed newOrocle);

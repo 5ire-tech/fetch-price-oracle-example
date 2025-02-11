@@ -4,7 +4,7 @@ import hre from "hardhat";
 
 dotenv.config();
 
-const CONTRACT_ADDRESS = "0xF2F4C646571c0DbF5D388E9FD5b15d02A5381af5"; // Replace with the actual deployed contract address
+const CONTRACT_ADDRESS = "0x0Ab33a4bb5e12aE166dcE673736E2dCaf6CFDC80"; // Replace with the actual deployed contract address
 const PRIVATE_KEY = process.env.PRIVATE_KEY as string; // 
 
 async function fetch5IREUSDTPrice() {
@@ -22,7 +22,8 @@ async function fetch5IREUSDTPrice() {
 
         // ✅ Define contract ABI for `FiveIREUSDTConverter`
         const contractABI = [
-            "function usdtOver5IRE() public view returns (uint256)"
+            "function get5ireOverUsdt() public view returns (uint256)",
+            "function get5ireOverUsd() public view returns (uint256)"
         ];
 
         // ✅ Create contract instance
@@ -30,14 +31,19 @@ async function fetch5IREUSDTPrice() {
 
         console.log("📡 Fetching 5IRE/USDT price from contract...");
 
-        // ✅ Fetch price
-        const price = await contract.usdtOver5IRE();
+        // ✅ Fetch price 5ire/USDT 
+        const price = await contract.get5ireOverUsdt();
 
         if (!price || price.toString() === "0") {
             console.warn("⚠️ Warning: Retrieved price is 0. Ensure the Oracle has valid data.");
         }
 
         console.log(`💰 5IRE/USDT Price: ${ethers.formatUnits(price, 18)} USDT`);
+
+
+        // ✅ Fetch price 5ire/USD
+        const priceUSD = await contract.get5ireOverUsd();
+        console.log(`💰 5IRE/USD Price: ${ethers.formatUnits(priceUSD, 18)} USD`);
     } catch (error: any) {
         console.error("❌ Error fetching price:", error.reason || error.message || error);
     }

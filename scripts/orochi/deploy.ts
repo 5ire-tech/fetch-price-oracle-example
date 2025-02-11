@@ -9,7 +9,7 @@ async function main() {
 
     const oracleAddress = "0x3E36123bAE1d9EB392C32849324D093a45CEDd7F"; // 5ireChain Testnet Oracle
 
-    const ContractFactory = await ethers.getContractFactory("Fetch5IREUSDT");
+    const ContractFactory = await ethers.getContractFactory("FetchPrice");
     const contract = await ContractFactory.deploy(oracleAddress);
 
     await contract.waitForDeployment();

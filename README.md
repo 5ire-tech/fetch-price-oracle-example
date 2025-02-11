@@ -1,7 +1,12 @@
-# 5ire Price Verification Script
+# Fetch 5ire's Price from 5ireChain 
+
+
+## Entangle Oracle
+
+<details>
+<summary>Fetch 5ire/USD Price from Entangle Oracle</summary>
 
 This script fetches and verifies the `5IRE/USD` price using the PullConsumer smart contract on the 5ireChain.
-
 
 ## Prerequisites
 
@@ -54,3 +59,29 @@ sent tx: 0x62364a7c80168b8a5a4e8e0758b7a034e96e2e57ae543a8c7907a27039e79a56
 
 ## References
 + https://docs.entangle.fi/universal-data-feeds-guides/how-to-integrate/evm-smart-contracts/fetch-data-via-pull-model
+
+
+</details>
+
+<br/>
+<br/>
+
+<details>
+<summary>Supported Pairs </summary>
+
+### 1. 5ire/USD
+
+
+</details>
+
+
+
+## Orochi Oracle
+
+
+<details>
+<summary>Fetch 5ire/USD, 5ire/USDT Price from Orochi Oracle</summary>
+
+</details>
+
+
