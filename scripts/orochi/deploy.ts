@@ -7,7 +7,7 @@ async function main() {
     const [deployer] = await ethers.getSigners();
     console.log("🚀 Deploying contract with account:", deployer.address);
 
-    const oracleAddress = "0x3E36123bAE1d9EB392C32849324D093a45CEDd7F"; // 5ireChain Testnet Oracle
+    const oracleAddress = "0xcAfEc24Fdb365e278bCF873B674CCC340734AE4f"; // 5ireChain Mainnet Oracle
 
     const ContractFactory = await ethers.getContractFactory("FetchPrice");
     const contract = await ContractFactory.deploy(oracleAddress);
