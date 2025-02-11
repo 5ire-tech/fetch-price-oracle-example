@@ -4,7 +4,7 @@ import hre from "hardhat";
 
 dotenv.config();
 
-const CONTRACT_ADDRESS = "0x0Ab33a4bb5e12aE166dcE673736E2dCaf6CFDC80"; // Replace with the actual deployed contract address
+const CONTRACT_ADDRESS = "0xFd9d57E022A28486605392dD694f924ff65D184E"; // Replace with the actual deployed contract address
 const PRIVATE_KEY = process.env.PRIVATE_KEY as string; // 
 
 async function fetch5IREUSDTPrice() {
@@ -20,7 +20,7 @@ async function fetch5IREUSDTPrice() {
         // ✅ Connect wallet with provider
         const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 
-        // ✅ Define contract ABI for `FiveIREUSDTConverter`
+        // ✅ Define contract ABI for `FetchPrice`
         const contractABI = [
             "function get5ireOverUsdt() public view returns (uint256)",
             "function get5ireOverUsd() public view returns (uint256)"

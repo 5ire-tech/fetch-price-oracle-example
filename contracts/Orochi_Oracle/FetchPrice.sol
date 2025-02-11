@@ -7,7 +7,7 @@ contract FetchPrice is Fetch5IRE {
     constructor(address provider) Fetch5IRE(provider) {}
 
     function estimate(uint256 amount) external view returns (uint256 total) {
-        total = _getPrice('5IRE') * amount;
+        total = _getPrice("5IRE") * amount;
     }
 
     function get5ireOverUsdt() external view returns (uint256 price) {

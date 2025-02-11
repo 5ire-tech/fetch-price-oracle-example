@@ -12,7 +12,7 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-      thunder: "355MY1P6JGB8IJS8AYUR1PU35K7SHFFBMN",
+      thunder: "", //REPLACE WITH YOUR API KEY FROM ETHERSCAN FOR VERIFICATION
     },
     customChains: [
       {
