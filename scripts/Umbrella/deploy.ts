@@ -7,11 +7,11 @@ async function main() {
     const [deployer] = await ethers.getSigners();
     console.log("🚀 Deploying contract with account:", deployer.address);
 
-    const ContractFactory = await ethers.getContractFactory("UmbrellaPriceFetcher");
-    const contract = await ContractFactory.deploy("0xb0564b9dc9818cc8D51bA4562Dd3c694eABb2eB2");
+    const UmbrellaAdapter = await ethers.getContractFactory("UmbrellaAdapter");
+    const contract = await UmbrellaAdapter.deploy();
 
     await contract.waitForDeployment();
-    console.log("✅ PriceFetcher deployed at:", contract.target);
+    console.log("✅ UmbrellaAdapter deployed at:", contract.target);
 }
 
 main().catch((error) => {

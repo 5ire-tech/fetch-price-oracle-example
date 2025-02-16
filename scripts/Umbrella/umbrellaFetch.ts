@@ -1,25 +1,19 @@
 import { ethers } from "hardhat"; // Use Hardhat's ethers
 
-const PRICE_FEEDER_CONTRACT = "0xd093E975B571C752b58406BEBB5b83f9b7859D9d";
+const UMBRELLA_ADAPTER_CONTRACT = "0x0ec3358913c64fb7d988fee67eB397c14a9725c3";
 
 async function main() {
     const [deployer] = await ethers.getSigners();
-    const contract = await ethers.getContractAt("UmbrellaPriceFetcher", PRICE_FEEDER_CONTRACT, deployer);
+    const contract = await ethers.getContractAt("UmbrellaAdapter", UMBRELLA_ADAPTER_CONTRACT, deployer);
 
-    const keys = [
-        ethers.encodeBytes32String("5IRE/USD"),  // Updated for ethers v6
-        ethers.encodeBytes32String("BTC/USD"),
-        ethers.encodeBytes32String("ETH/USD"),
-    ];
+    // Feed address on Testnet
+    const feedAddress = "0x1B9131518EadDFDCCc1876616e3Bf9c534b4e527";
+    const feedKey = ethers.toUtf8Bytes("5IRE/USD");
 
-    for (const key of keys) {
-        try {
-            const [price, timestamp] = await contract.getPrice(key);
-            console.log(`${ethers.decodeBytes32String(key)} Price: ${ethers.formatUnits(price, 8)} USD`);
-        } catch (error) {
-            console.error(`Error fetching ${ethers.decodeBytes32String(key)} price:`, error);
-        }
-    }
+    const [price, timestamp] = await contract.getPrice(feedAddress, feedKey);
+    console.log(`Price: ${price} USD`);
+    console.log(`Timestamp: ${timestamp}`);
+
 }
 
 main().catch((error) => {
