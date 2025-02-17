@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
-const UMBRELLA_ADAPTER_CONTRACT = "0x0ec3358913c64fb7d988fee67eB397c14a9725c3";
-
+const UMBRELLA_ADAPTER_CONTRACT = "0x16BFaA0166F7640fade3c5454476EfFA3fBc2faB"; //Replace it with your deployed UmbrellaAdapter Contract Address 
+// 0x0ec3358913c64fb7d988fee67eB397c14a9725c3
 async function main() {
     const [deployer] = await ethers.getSigners();
     const contract = await ethers.getContractAt("UmbrellaAdapter", UMBRELLA_ADAPTER_CONTRACT, deployer);

@@ -161,3 +161,86 @@ When successful, you should see output similar to:
 
 
 </details>
+
+
+
+## Umbrella Network
+
+<details>
+<summary>Fetch 5IRE/USD Price from Umbrella Network</summary>
+This script fetches the `5IRE/USD` price using the `UmbrellaPriceFetcher` smart contract on the `5ireChain`.
+
+## Prerequisites
+
+- Node.js (v20 or higher)
+- Yarn
+- A `5ireChain Mainnet` Configuration
+- Private key with sufficient `5IRE coins` for gas fees
+
+## Setup
+
+1. Install dependencies:
+```bash
+yarn install
+```
+
+2. Configure environment variables by creating a `.env` file:
+
+```env
+FIRE_URL=https://rpc.5ire.network
+FIRE_DEPLOYER=your_private_key_here
+```
+
+## Running the Script
+Compile and deploy the contract:
+
+```bash
+npx hardhat compile
+```
+
+Deploy the contract to the `5ireChain` network:
+
+```bash
+npx hardhat run scripts/Umbrella/deploy.ts --network fire
+```
+
+Copy the deployed contract address and update `umbrellaFetch.ts` with it. Then run:
+
+```bash
+npx hardhat run scripts/Umbrella/umbrellaFetch.ts --network fire
+```
+
+## Script Overview
+
+The script performs the following operations:
+
+1. Fetches `5IRE/USD` price from `Umbrella Network`
+2. Interacts with the `Feed Address` contract at
+`0x1B9131518EadDFDCCc1876616e3Bf9c534b4e527`
+3. Retrieves and displays the latest price
+
+## Expected Output
+
+When successful, you should see output similar to:
+
+```
+Price: 0.00338371 USD
+Timestamp: 1739737743
+```
+
+## References
++https://umbrella-network.readme.io/docs/umb-token-contracts
+
++https://github.com/umbrella-network/phoenix/blob/develop/contracts/onChainFeeds/UmbrellaFeedsReader.sol
+
+</details>
+<br/>
+<br/>
+
+<details>
+<summary>Supported Pairs </summary>
+
+### 1. 5IRE/USD
+
+</details>
+
