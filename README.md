@@ -229,9 +229,9 @@ Timestamp: 1739737743
 ```
 
 ## References
-+https://umbrella-network.readme.io/docs/umb-token-contracts
++ https://umbrella-network.readme.io/docs/umb-token-contracts
 
-+https://github.com/umbrella-network/phoenix/blob/develop/contracts/onChainFeeds/UmbrellaFeedsReader.sol
++ https://github.com/umbrella-network/phoenix/blob/develop/contracts/onChainFeeds/UmbrellaFeedsReader.sol
 
 </details>
 <br/>
