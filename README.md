@@ -175,7 +175,7 @@ This script fetches the `5IRE/USD` price using the `UmbrellaPriceFetcher` smart 
 - Node.js (v20 or higher)
 - Yarn
 - A `5ireChain Mainnet` Configuration
-- Private key with sufficient `5IRE coins` for gas fees
+- Private key with sufficient `5IRE coins` for Gas fees
 
 ## Setup
 
