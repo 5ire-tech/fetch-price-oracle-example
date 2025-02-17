@@ -243,4 +243,3 @@ Timestamp: 1739737743
 ### 1. 5IRE/USD
 
 </details>
-

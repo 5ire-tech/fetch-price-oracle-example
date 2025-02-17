@@ -17,7 +17,7 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-      thunder: "355MY1P6JGB8IJS8AYUR1PU35K7SHFFBMN", //REPLACE WITH YOUR API KEY FROM ETHERSCAN FOR VERIFICATION
+      thunder: "", //REPLACE WITH YOUR API KEY FROM ETHERSCAN FOR VERIFICATION
       fire: process.env.FIRE_API_KEY // Add your FIRE API key in .env
     },
     customChains: [
