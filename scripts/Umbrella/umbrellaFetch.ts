@@ -1,4 +1,4 @@
-import { ethers } from "hardhat"; // Use Hardhat's ethers
+import { ethers } from "hardhat";
 
 const UMBRELLA_ADAPTER_CONTRACT = "0x0ec3358913c64fb7d988fee67eB397c14a9725c3";
 
@@ -8,10 +8,16 @@ async function main() {
 
     // Feed address on Testnet
     const feedAddress = "0x1B9131518EadDFDCCc1876616e3Bf9c534b4e527";
-    const feedKey = ethers.toUtf8Bytes("5IRE/USD");
+    // Supported feed key on testnet 
+    // "5ire-USD"
+    // "WBTC-USD"
+    // "BTC-USD"
+    // "ETH-USD"
+    const feedKey = ethers.id("5ire-USD");
 
     const [price, timestamp] = await contract.getPrice(feedAddress, feedKey);
-    console.log(`Price: ${price} USD`);
+    const formattedPrice = ethers.formatUnits(price, 18);
+    console.log(`Price: ${formattedPrice} USD`);
     console.log(`Timestamp: ${timestamp}`);
 
 }
